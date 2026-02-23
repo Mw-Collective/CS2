@@ -12,6 +12,11 @@ This folder tracks share-code presets and review notes.
 - Keep each preset in markdown format.
 - Include source, style notes, and last validation date.
 - Start from: [codes-template.md](codes-template.md)
+- Track observed-player copies in: [observed-crosshair-log-template.md](observed-crosshair-log-template.md)
+
+## Related Blog Post
+
+- [Crosshair share system timeline](../BLOG/2026-02-23-crosshair-share-system-timeline.md)
 
 ## References
 

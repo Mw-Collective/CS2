@@ -4,22 +4,23 @@ This folder stores optional bind layout files.
 
 ## Source-Backed Facts
 
-- `bind` is available in Source engine command systems and writes to `config.cfg`.
+- `bind` is part of Source engine command systems.
 - `exec` runs `.cfg` files so layouts can be split into separate files.
-- Archived variables can be saved by engine shutdown behavior or by running `host_writeconfig`.
+- `+` command arguments are processed from launch options through startup command handling.
 
 ## Repository Convention
 
 - Keep named layouts as dedicated cfg files.
-- Keep one minimal template file in this folder.
+- Keep template files for quick duplication.
 - Load a layout with `exec <filename>`.
 
-## Template
+## Templates
 
 - [keybinds_template.cfg](keybinds_template.cfg)
+- [keybinds_grenade_slots_template.cfg](keybinds_grenade_slots_template.cfg)
 
 ## References
 
 - [bind command](https://developer.valvesoftware.com/wiki/Bind)
 - [exec command](https://developer.valvesoftware.com/wiki/Exec)
-- [DevMsg / FCVAR_ARCHIVE note](https://developer.valvesoftware.com/wiki/DevMsg)
+- [valve.rc (`stuffcmds`)](https://developer.valvesoftware.com/wiki/Valve.rc)

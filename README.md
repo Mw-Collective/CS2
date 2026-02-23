@@ -1,52 +1,32 @@
 # CS2 Config Hub
 
-Counter-Strike 2 config presets, plus source-backed notes for maintaining them.
+Counter-Strike 2 config presets with source-backed maintenance notes.
+
+## Profiles
+
+| Profile | Purpose | Folder |
+| --- | --- | --- |
+| [Potato](Potato/README.md) | Low-end stability profile | `Potato/` |
+| [Banana](Banana/README.md) | Mid-range competitive balance | `Banana/` |
+| [Sandwich](Sandwich/README.md) | High-end responsiveness profile | `Sandwich/` |
 
 ## Repository Sections
 
 | Section | Purpose |
 | --- | --- |
-| [Potato](Potato/README.md) | Low-end profile files and notes |
-| [Banana](Banana/README.md) | Mid-range profile files and notes |
-| [Melon](Melon/README.md) | High-end profile files and notes |
-| [Crosshairs](Crosshairs/README.md) | Crosshair share-code notes and templates |
-| [Keybinds](Keybinds/README.md) | Keybind workflow and template configs |
-| [BLOG](BLOG/README.md) | Source-backed posts for this repository |
-| [CHECKLISTS](CHECKLISTS/README.md) | Post-update validation workflow |
-| [TOOLS](TOOLS/README.md) | Local helper scripts |
-| [Personal Settings](%23%20Personal%20Settings/MSI%20KATANA%20GF66%20Research.md) | Machine-specific research file |
+| [Crosshairs](Crosshairs/README.md) | Crosshair notes and templates |
+| [Keybinds](Keybinds/README.md) | Keybind templates |
+| [Blog](Blog/README.md) | Source-backed posts |
+| [Checklists](Checklists/README.md) | Update and audit workflow |
+| [Tools](Tools/README.md) | Local helper scripts |
+| [Personal Settings](Personal-Settings/MSI%20KATANA%20GF66%20Research.md) | Machine-specific research |
 
-## Page Index
+## Quick Start
 
-- [Banana README](Banana/README.md)
-- [Melon README](Melon/README.md)
-- [Potato README](Potato/README.md)
-- [Crosshairs README](Crosshairs/README.md)
-- [Crosshair code template](Crosshairs/codes-template.md)
-- [Observed crosshair log template](Crosshairs/observed-crosshair-log-template.md)
-- [Keybinds README](Keybinds/README.md)
-- [Keybind base template](Keybinds/keybinds_template.cfg)
-- [Keybind grenade-slot template](Keybinds/keybinds_grenade_slots_template.cfg)
-- [BLOG index](BLOG/README.md)
-- [BLOG: Launch options and exec](BLOG/2026-02-23-launch-options-and-exec.md)
-- [BLOG: FPS cap baseline](BLOG/2026-02-23-fps-cap-baseline.md)
-- [BLOG: Update-driven maintenance](BLOG/2026-02-23-update-driven-maintenance.md)
-- [BLOG: Command inventory and audit](BLOG/2026-02-23-command-inventory-and-audit.md)
-- [BLOG: Crosshair share timeline](BLOG/2026-02-23-crosshair-share-system-timeline.md)
-- [CHECKLISTS index](CHECKLISTS/README.md)
-- [Checklist: Post-update audit](CHECKLISTS/post-update-audit.md)
-- [Checklist: Current command inventory](CHECKLISTS/current-command-inventory.md)
-- [TOOLS index](TOOLS/README.md)
-- [Tool: command_inventory.ps1](TOOLS/command_inventory.ps1)
-- [Tool: update-command-inventory.ps1](TOOLS/update-command-inventory.ps1)
-- [Personal settings research](%23%20Personal%20Settings/MSI%20KATANA%20GF66%20Research.md)
-
-## Source-Backed Workflow
-
-1. Use `exec <filename>` to run a config file from the game cfg path.
-2. Use launch options with `+` commands (for example `+exec banana.cfg`) for startup execution.
-3. Use `fps_max` to define an FPS cap and `cl_showfps` to check FPS while testing.
-4. After major updates, run the command inventory tool and complete the audit checklist.
+1. Choose a profile (`Potato`, `Banana`, or `Sandwich`).
+2. Set launch options with `+exec <profile>.cfg`.
+3. Run full maintenance with [Tools/run-maintenance.ps1](Tools/run-maintenance.ps1).
+4. Review outputs in [Checklists](Checklists/README.md).
 
 ## Preset Files
 
@@ -54,21 +34,73 @@ Counter-Strike 2 config presets, plus source-backed notes for maintaining them.
 | --- | --- | --- |
 | Potato | `Potato/potato.cfg` | `-novid -console -fullscreen +exec potato.cfg` |
 | Banana | `Banana/banana.cfg` | `-novid -console -fullscreen +exec banana.cfg` |
-| Melon | `Melon/melon.cfg` | `-novid -console -fullscreen +exec melon.cfg` |
+| Sandwich | `Sandwich/sandwich.cfg` | `-novid -console -fullscreen +exec sandwich.cfg` |
+
+## Profile Comparison
+
+| Setting | Potato | Banana | Sandwich |
+| --- | --- | --- | --- |
+| `fps_max` | `0` | `200` | `0` |
+| `fps_max_ui` | `60` | `120` | `144` |
+| `mm_dedicated_search_maxping` | `70` | `60` | `50` |
+| `rate` | `524288` | `786432` | `786432` |
+| Telemetry level (`cl_hud_telemetry_*`) | `1` | `2` | `2` |
+| Viewmodel X/Y/Z | `2 / 0 / -2` | `2.5 / 0 / -1.5` | `2.5 / 0 / -1.5` |
+
+Full matrix:
+- [Checklists/profile-matrix.md](Checklists/profile-matrix.md)
+
+## Maintenance Commands
+
+```powershell
+# Validate profile command structure and value ranges
+powershell -ExecutionPolicy Bypass -File Tools/validate-profiles.ps1
+
+# Rebuild command inventory snapshot
+powershell -ExecutionPolicy Bypass -File Tools/update-command-inventory.ps1
+
+# Rebuild profile matrix
+powershell -ExecutionPolicy Bypass -File Tools/build-profile-matrix.ps1
+
+# Run all maintenance tasks
+powershell -ExecutionPolicy Bypass -File Tools/run-maintenance.ps1
+
+# Check local markdown links after refactors
+powershell -ExecutionPolicy Bypass -File Tools/check-markdown-links.ps1
+```
+
+## Maintenance Outputs
+
+- [Command inventory snapshot](Checklists/current-command-inventory.md)
+- [Profile matrix snapshot](Checklists/profile-matrix.md)
+- [Benchmark session template](Checklists/benchmark-session-template.md)
+
+## External Web Research (Beyond Valve Developer)
+
+- Steam publishes CS2 minimum/recommended specs on the official store page.
+- NVIDIA documents Reflex support in CS2 and where to enable it.
+- AMD release notes on October 25, 2023 (Adrenalin 23.10.2) temporarily disabled Anti-Lag+ for CS2 after VAC ban reports.
+- Microsoft documents optimized presentation path options for windowed games on Windows.
+- OpenBenchmarking publishes an active CS2 benchmark test suite.
+- NVIDIA FrameView provides frame-time and power telemetry for profiling runs.
 
 ## Documentation Rules
 
-- New factual claims should include a source link in the same file.
-- Prefer Valve Developer pages and official Counter-Strike release notes.
-- Re-check command validity after major game updates.
+- New factual claims should include source links in the same file.
+- Label recommendations that are not directly documented as `Inference`.
+- Re-check profile commands after major CS2 updates.
 
 ## Core References
 
 - [exec command](https://developer.valvesoftware.com/wiki/Exec)
-- [Command line options](https://developer.valvesoftware.com/wiki/Command_Line_Startup_Options)
-- [valve.rc and stuffcmds behavior](https://developer.valvesoftware.com/wiki/Valve.rc)
+- [Command line startup options](https://developer.valvesoftware.com/wiki/Command_Line_Startup_Options)
+- [valve.rc and `stuffcmds`](https://developer.valvesoftware.com/wiki/Valve.rc)
 - [fps_max](https://developer.valvesoftware.com/wiki/Fps_max)
 - [cl_showfps](https://developer.valvesoftware.com/wiki/Cl_showfps)
-- [bind command](https://developer.valvesoftware.com/wiki/Bind)
 - [CS2 command list (Valve Developer)](https://developer.valvesoftware.com/wiki/List_of_Counter-Strike_2_console_commands_and_variables)
-- [Counter-Strike updates feed](https://www.counter-strike.net/news/updates)
+- [Counter-Strike 2 Steam page](https://store.steampowered.com/app/730/CounterStrike_2/)
+- [NVIDIA Reflex in CS2](https://www.nvidia.com/en-us/geforce/news/reflex-counter-strike-2-cs2-nvidia-reflex/)
+- [AMD Adrenalin 23.10.2 release notes](https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-23-10-2.html)
+- [Microsoft windowed game optimizations](https://support.microsoft.com/en-us/windows/optimizations-for-windowed-games-in-windows-3f006843-2c7e-4ed0-9a5e-f9389e535952)
+- [OpenBenchmarking CS2 test](https://openbenchmarking.org/test/pts/cs2)
+- [NVIDIA FrameView](https://www.nvidia.com/en-us/geforce/technologies/frameview/)

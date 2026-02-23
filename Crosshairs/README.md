@@ -16,7 +16,7 @@ This folder tracks share-code presets and review notes.
 
 ## Related Blog Post
 
-- [Crosshair share system timeline](../BLOG/2026-02-23-crosshair-share-system-timeline.md)
+- [Crosshair share system timeline](../Blog/2026-02-23-crosshair-share-system-timeline.md)
 
 ## References
 

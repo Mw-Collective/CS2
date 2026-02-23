@@ -1,6 +1,6 @@
 param(
     [string]$Root = ".",
-    [string]$OutputPath = "CHECKLISTS/current-command-inventory.md",
+    [string]$OutputPath = "Checklists/current-command-inventory.md",
     [string]$SnapshotDate = (Get-Date -Format "yyyy-MM-dd")
 )
 
@@ -13,7 +13,9 @@ $content += ''
 $content += $inventoryLines
 $content += ''
 $content += 'Regenerate with:'
-$content += '`powershell -ExecutionPolicy Bypass -File TOOLS/update-command-inventory.ps1`'
+$content += '`powershell -ExecutionPolicy Bypass -File Tools/update-command-inventory.ps1`'
 
 Set-Content -Path $OutputPath -Value $content
 Write-Output "Updated $OutputPath"
+
+exit 0

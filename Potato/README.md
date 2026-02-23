@@ -1,22 +1,21 @@
-# 🥔 Potato (Low-End PCs)
+# Potato Profile
 
-**Target:** Maximum stability on weak CPUs / older GPUs
-**Expected FPS Range:** 60–144 (hardware dependent)
+Low-end profile.
 
-### Recommended Graphics (Set In-Game)
+## Files
 
-* Display Mode: Fullscreen
-* MSAA: Off
-* Global Shadow Quality: Low
-* Model / Texture Detail: Low
-* Shader Detail: Low
-* Particle Detail: Low
-* Ambient Occlusion: Disabled
-* High Dynamic Range: Performance
-* Boost Player Contrast: Enabled
+- Config: [potato.cfg](potato.cfg)
+- Hub: [root README](../README.md)
 
-### Launch Options
+## Suggested Launch Option
 
-```
+```cfg
 -novid -console -fullscreen +exec potato.cfg
 ```
+
+## References
+
+- [exec command](https://developer.valvesoftware.com/wiki/Exec)
+- [valve.rc (`stuffcmds`)](https://developer.valvesoftware.com/wiki/Valve.rc)
+- [Command line options](https://developer.valvesoftware.com/wiki/Command_Line_Startup_Options)
+

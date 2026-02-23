@@ -1,23 +1,21 @@
-# 🍉 Melon (High-End PCs)
+# Melon Profile
 
-**Target:** High refresh (240Hz+) & maximum responsiveness
-**Expected FPS Range:** 240+
+High-end profile.
 
-### Recommended Graphics (Set In-Game)
+## Files
 
-* Display Mode: Fullscreen
-* MSAA: 4x
-* Global Shadow Quality: High
-* Model / Texture Detail: High
-* Shader Detail: Medium
-* Particle Detail: Medium
-* Ambient Occlusion: Medium
-* High Dynamic Range: Quality
-* Texture Filtering: 16x
-* Boost Player Contrast: Enabled
+- Config: [melon.cfg](melon.cfg)
+- Hub: [root README](../README.md)
 
-### Launch Options
+## Suggested Launch Option
 
-```
+```cfg
 -novid -console -fullscreen +exec melon.cfg
 ```
+
+## References
+
+- [exec command](https://developer.valvesoftware.com/wiki/Exec)
+- [valve.rc (`stuffcmds`)](https://developer.valvesoftware.com/wiki/Valve.rc)
+- [Command line options](https://developer.valvesoftware.com/wiki/Command_Line_Startup_Options)
+
